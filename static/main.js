@@ -32,7 +32,7 @@ async function turn_change(event){
     data = await getJsonFile()
     console.log("AAAAAAAAAAAAAAAAAAAAAA")
     setTimeout(() => {
-        if(data["game_state"] == "finish"){
+        if(data["game_state"] != "wait"){
             turn = 0
             show_end_popup()
         }
@@ -210,7 +210,9 @@ async function History(){
     modifyJsonFile("key", "History")
 }
 
-function show_end_popup(){
+async function show_end_popup(){
+    data = await getJsonFile();
+    document.getElementById("EndPopup").innerHTML = "<h2>"+ data["game_state"]+"</h2><button onclick='go_back_end()'>Go Back</button>"
     show("EndPopup");
 }
 
@@ -219,6 +221,57 @@ function go_back_end(){
     show("popup");
 }
 
+function search_history(){
+    modifyJsonFile("keyH", "valueHsearch");
+    player_name = document.getElementById("valueHsearch").value
+    document.getElementById("HGames").innerHTML = ""
+    setTimeout(async () => {
+        data = await getJsonFile()
+        for(i = 0; i < data["HGames"].length;i++){
+            if(data["HGames"][i]["player1"] == player_name || data["HGames"][i]["player2"] == player_name){
+                if(data["HGames"][i]["draw"] == false){
+                    document.getElementById("HGames").innerHTML += 
+                        "<h3> " + data["HGames"][i]["date"] 
+                        + " - " + data["HGames"][i]["player1"] 
+                        + " vs " + data["HGames"][i]["player2"] 
+                        + ": " + data["HGames"][i]["winner"] 
+                        + " won</h3>"
+                } else{
+                    document.getElementById("HGames").innerHTML += 
+                        "<h3> " + data["HGames"][i]["date"] 
+                        + " - " + data["HGames"][i]["player1"] 
+                        + " vs " + data["HGames"][i]["player2"] 
+                        + ": Draw</h3>"
+                }
+            }
+        }
+        show("HistoryPopup");
+        hide("popup");
+    }, 500);
+
+}
+
+function search_scoreboard(){
+    modifyJsonFile("keySB", "valueSBsearch");
+    player_name = document.getElementById("valueSBsearch").value
+    document.getElementById("LBGames").innerHTML = ""
+
+    setTimeout(async () => {
+        data = await getJsonFile()
+        for(i = 0; i < data["LBGames"].length;i++){
+            if(data["LBGames"][i]["name"] == player_name){
+            document.getElementById("LBGames").innerHTML += 
+            "<h3> " + (i+1) + ". " + data["LBGames"][i]["name"] 
+            + " - Wins: " + data["LBGames"][i]["wins"] 
+            + ", Losses: " + data["LBGames"][i]["losses"] 
+            + ", Draws: " + data["LBGames"][i]["draws"] 
+            + "</h3>"
+            }
+        }
+        show("ScoreboardPopup");
+        hide("popup");
+    }, 500);
+}
 
 function go_back_scoreboard(){
     hide("ScoreboardPopup");

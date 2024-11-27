@@ -116,14 +116,14 @@ def play_round(players, stats, history, ai_mode=False):
             change_val("grid","000000000")
             change_val("home_option","N-A")
             
-            change_val("game_state","finish")
+            change_val("game_state",winner+" Wins!")
             break
         elif is_full(board):
             print("\nIt's a draw!")
             change_val("grid","000000000")
             change_val("home_option","N-A")
             
-            change_val("game_state","finish")
+            change_val("game_state","Draw")
             break
 
         current_turn = players[1] if current_turn == players[0] else players[0]

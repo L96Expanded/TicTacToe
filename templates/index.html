@@ -87,22 +87,34 @@
         <button onclick='set_playerAI()'>Set Player</button>
     </div>
 
+
     <div id="ScoreboardPopup" class="InfoPopup" style="background-color: rgb(4, 36, 75);">
         <h2>Leaderboard</h2>
 
         <input type="text" id="keySB" name="keySB" value="player_search" style="display: none;">
         <input type="text" id="valueSB" name="valueSB" value="NONE" style="display: none;">
+        
+        <label for="valueSBsearch">Search Games</label><br><br>
+        <input type="text" id="valueSBsearch" name="valueSBsearch" placeholder="Player Name"><br><br>
+
+        <button onclick='search_scoreboard()'>Search</button>
 
         <div id="LBGames"></div>
 
         <button onclick='go_back_scoreboard()'>Go Back</button>
     </div>
 
+
     <div id="HistoryPopup" class="InfoPopup" style="background-color: rgb(4, 75, 4);">
         <h2>History</h2>
 
         <input type="text" id="keyH" name="keyH" value="player_search" style="display: none;">
         <input type="text" id="valueH" name="valueH" value="NONE" style="display: none;">
+
+        <label for="valueHsearch">Search Games</label><br><br>
+        <input type="text" id="valueHsearch" name="valueHsearch" placeholder="Player Name"><br><br>
+
+        <button onclick='search_history()'>Search</button>
 
         <div id="HGames"></div>
 

@@ -17,6 +17,7 @@ def add_game_history(history, winner, players, ai_mode):
 
 def display_game_history(history):
     history = algos.quicksort(history, 'date')
+    help.change_val("HGames",history)
     print("\nGame History (sorted by date):")
     for game in history:
         result = "Draw" if game['draw'] else f"{game['winner']} won"
@@ -31,11 +32,12 @@ def search_game_history(history):
     while json.load(open('data.json'))["player_search"] == "N-A":
         time.sleep(0.5)
     player_name = json.load(open('data.json'))["player_search"]  # Take input as-is
+    if json.load(open('data.json'))["player_search"] == "NONE":
+        help.change_val("home_option","N-A")
     help.change_val("player_search","N-A")
-    help.change_val("home_option","N-A")
     
     sorted_history = algos.quicksort(history, 'date')
-    help.change_val("HGames",sorted_history)
+    
     found_games = []
 
     # Check if the player is part of the game (case-insensitive)
