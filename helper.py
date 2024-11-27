@@ -2,7 +2,31 @@ from collections import deque
 import ai
 import leaderboard as lb
 import gamehist as gh
+import time
+import json
 
+def change_val(key,val):
+    with open('data.json') as f:
+        data = json.load(f)
+
+    data[key] = val
+
+    with open('data.json', 'w') as f:
+        json.dump(data, f)
+        
+def giveGridChange(ai_mode, move, turn, players):
+    grid = json.load(open('data.json'))["grid"]
+    if(ai_mode == False):
+        move_str = json.load(open('data.json'))["move"]
+        
+    else:
+        move_str = str(move[0]) + " " + str(move[1])
+    n = (int(move_str[0]) * 3) + int(move_str[2])
+    if(turn == players[0]):
+        grid = grid[: n] + "1" + grid[n+1 :]
+    else:
+        grid = grid[: n] + "2" + grid[n+1 :]
+    return grid
 
 # Initialize the board as a 2D array
 def initialize_board():
@@ -39,7 +63,10 @@ def home_screen():
     print("3. View Leaderboard")
     print("4. View Game History")
     print("5. Exit")
-    return input("Select an option: ").strip()
+    while json.load(open('data.json'))["home_option"] == "N-A":
+        time.sleep(0.5)
+    return json.load(open('data.json'))["home_option"]
+    # return json.load(open('infoTransport.json'))[0]["home_option"]
 
 
 # Play a single round of the game
@@ -53,12 +80,20 @@ def play_round(players, stats, history, ai_mode=False):
 
     while True:
         display_board(board)
-
+        change_val("game_state","wait")
         if ai_mode and current_turn == ai_player:
             print("AI is making a move...")
             move = ai.get_ai_move(board, ai_player, players[0])
+            gridchange = giveGridChange(True, move, current_turn, players)
+            change_val("grid",gridchange)
+            change_val("move","N-A")
         else:
-            user_input = input(f"{current_turn}, enter your move (row col, or 'home' to quit): ").strip()
+            while json.load(open('data.json'))["move"] == "N-A":
+                time.sleep(0.05)
+            gridchange = giveGridChange(False, 0,current_turn, players)
+            change_val("grid",gridchange)
+            user_input = json.load(open('data.json'))["move"]
+            change_val("move","N-A")
             if user_input.lower() == 'home':
                 print("Returning to the main menu...")
                 return
@@ -78,9 +113,17 @@ def play_round(players, stats, history, ai_mode=False):
         if check_winner(board, "X" if current_turn == players[0] else "O"):
             winner = current_turn
             print(f"\n{current_turn} wins!")
+            change_val("grid","000000000")
+            change_val("home_option","N-A")
+            
+            change_val("game_state","finish")
             break
         elif is_full(board):
             print("\nIt's a draw!")
+            change_val("grid","000000000")
+            change_val("home_option","N-A")
+            
+            change_val("game_state","finish")
             break
 
         current_turn = players[1] if current_turn == players[0] else players[0]
@@ -102,8 +145,11 @@ def play_game():
     while True:
         option = home_screen()
         if option == "1":
-            player1 = input("Enter name for Player 1 (X): ").strip().capitalize()
-            player2 = input("Enter name for Player 2 (O): ").strip().capitalize()
+            print("Enter name for Player 1 (X): ")
+            while json.load(open('data.json'))["player1"] == "N-A" or json.load(open('data.json'))["player2"] == "N-A":
+                time.sleep(0.5)
+            player1 = json.load(open('data.json'))["player1"]
+            player2 = json.load(open('data.json'))["player2"]
             if player1 not in stats:
                 stats[player1] = {"wins": 0, "losses": 0, "draws": 0}
             if player2 not in stats:
@@ -111,7 +157,10 @@ def play_game():
             players = deque([player1, player2])
             play_round(players, stats, history, ai_mode=False)
         elif option == "2":
-            player_name = input("Enter your name (X): ").strip()
+            while json.load(open('data.json'))["player1"] == "N-A":
+                time.sleep(0.5)
+                
+            player_name = json.load(open('data.json'))["player1"]
             if player_name not in stats:
                 stats[player_name] = {"wins": 0, "losses": 0, "draws": 0}
             ai_name = "AI"

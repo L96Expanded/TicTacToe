@@ -1,5 +1,8 @@
 import datetime
 import algorithms as algos
+import helper as help
+import time
+import json
 
 
 def add_game_history(history, winner, players, ai_mode):
@@ -25,8 +28,14 @@ def display_game_history(history):
 # Search for all games involving a specific player
 def search_game_history(history):
     print("\nSearch for a game in the history.")
-    player_name = input("Enter the player's name (case-insensitive): ").strip().capitalize()
+    while json.load(open('data.json'))["player_search"] == "N-A":
+        time.sleep(0.5)
+    player_name = json.load(open('data.json'))["player_search"]  # Take input as-is
+    help.change_val("player_search","N-A")
+    help.change_val("home_option","N-A")
+    
     sorted_history = algos.quicksort(history, 'date')
+    help.change_val("HGames",sorted_history)
     found_games = []
 
     # Check if the player is part of the game (case-insensitive)

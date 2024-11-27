@@ -1,4 +1,7 @@
 import algorithms as algos
+import helper as help
+import time
+import json
 
 
 def update_stats(stats, winner, players):
@@ -16,7 +19,8 @@ def update_stats(stats, winner, players):
 def display_leaderboard(stats):
     leaderboard = [{'name': player, **stats[player]} for player in stats]
     leaderboard = algos.quicksort(leaderboard, 'wins')  # Sort descending by wins
-
+    help.change_val("LBGames",leaderboard)
+    
     print("\nLeaderboard (sorted by wins):")
     for i, player in enumerate(leaderboard, 1):
         print(f"{i}. {player['name']} - Wins: {player['wins']}, Losses: {player['losses']}, Draws: {player['draws']}")
@@ -28,8 +32,14 @@ def display_leaderboard(stats):
 # Search leaderboard by name
 def search_leaderboard(stats):
     print("\nSearch for a player in the leaderboard.")
-    name = input("Enter the player's name: ").strip()  # Take input as-is
-
+    while json.load(open('data.json'))["player_search"] == "N-A":
+        time.sleep(0.5)
+    name = json.load(open('data.json'))["player_search"]  # Take input as-is
+    if json.load(open('data.json'))["player_search"] == "NONE":
+        help.change_val("home_option","N-A")
+    help.change_val("player_search","N-A")
+    
+    
     # Convert stats dictionary into a list for searching
     leaderboard = [{'name': player, **stats[player]} for player in stats]
 

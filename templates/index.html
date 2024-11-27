@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tic Tac Toe</title>
+    <link rel="stylesheet" href="/static/style.css"/> 
+</head>
+<body onload="set_params(event)" onresize="set_params(event)">
+    <div class="grid" id="grid_hover"></div>
+
+    <div class="grid" >
+        <div style="top:33%;" class="grid_line_horizontal"></div>
+        <div style="top:67%;" class="grid_line_horizontal"></div>
+        <div style="left:33%;" class="grid_line_vertical"></div>
+        <div style="left:67%;" class="grid_line_vertical"></div>
+    </div>
+
+    <input type="text" id="gridKey" name="gridKey" value="move" style="display: none;" >
+
+    <input type="text" id="grid 1 1" name="grid 1 1" value="0 0" style="display: none;">
+    <input type="text" id="grid 1 2" name="grid 1 2" value="0 1" style="display: none;">
+    <input type="text" id="grid 1 3" name="grid 1 3" value="0 2" style="display: none;">
+    <input type="text" id="grid 2 1" name="grid 2 1" value="1 0" style="display: none;">
+    <input type="text" id="grid 2 2" name="grid 2 2" value="1 1" style="display: none;">
+    <input type="text" id="grid 2 3" name="grid 2 3" value="1 2" style="display: none;">
+    <input type="text" id="grid 3 1" name="grid 3 1" value="2 0" style="display: none;">
+    <input type="text" id="grid 3 2" name="grid 3 2" value="2 1" style="display: none;">
+    <input type="text" id="grid 3 3" name="grid 3 3" value="2 2" style="display: none;">
+    
+    <div id="grid" class="grid" onclick="turn_change(event)" onmouseover="grid_hover_see(event)" onmouseleave="grid_hover_end(event)">
+    </div>
+
+    <div class="border-r"></div>
+    <div class="border-l"></div>
+
+
+    <div id="popup">
+        <div class="menu">
+            <h1 class="title">TIC</h1>
+            <h1 class="title">TAC</h1>
+            <h1 class="title">TOE</h1>
+
+            <input type="text" id="key" name="key" value="home_option" style="display: none;" >
+            <input type="text" id="P1vP2" name="P1vP2" value="1" style="display: none;">
+            <input type="text" id="P1vAI" name="P1vAI" value="2" style="display: none;">
+            <input type="text" id="Scoreboard" name="Scoreboard" value="3" style="display: none;">
+            <input type="text" id="History" name="History" value="4" style="display: none;">
+
+            <button style="background-color: rgb(66, 19, 19);" onclick='PVP()' class="menu_select" id="player vs player">P1 vs P2</button>
+            <button style="background-color: rgb(66, 19, 19);" onclick='PVAI()' class="menu_select" id="player vs AI">P1 vs AI</button>
+            <button style="background-color: rgb(4, 36, 75);" onclick='Scoreboard()' class="menu_select" id="view_scores">Leaderboard</button>
+            <button style="background-color: rgb(4, 75, 4);" onclick='History()' class="menu_select" id="view_history">History</button>
+        </div>
+    </div>
+
+    <div id="PVPpopup1" class="PVPpopup">
+        <h2>Who's Gonna Play?</h2>
+        
+        <input type="text" id="keyP1" name="keyP1" value="player1" style="display: none;">
+
+        <label for="valueP1">Player 1</label><br><br>
+        <input type="text" id="valueP1" name="valueP1"><br><br>
+        
+        <button onclick='set_player1()'>Set Player 1</button>
+    </div>
+
+    <div id="PVPpopup2" class="PVPpopup">
+        <h2>Who's Gonna Play?</h2>
+        
+        <input type="text" id="keyP2" name="keyP2" value="player2" style="display: none;">
+
+        <label for="valueP2">Player 2</label><br><br>
+        <input type="text" id="valueP2" name="valueP2"><br><br>
+        
+        <button onclick='set_player2()'>Set Player 2</button>
+    </div>
+
+    <div id="PVPpopupAI" class="PVPpopup">
+        <h2>Who's Gonna Play?</h2>
+        
+        <input type="text" id="keyPAI" name="keyPAI" value="player1" style="display: none;">
+
+        <label for="valuePAI">Player Name</label><br><br>
+        <input type="text" id="valuePAI" name="valuePAI"><br><br>
+        
+        <button onclick='set_playerAI()'>Set Player</button>
+    </div>
+
+    <div id="ScoreboardPopup" class="InfoPopup" style="background-color: rgb(4, 36, 75);">
+        <h2>Leaderboard</h2>
+
+        <input type="text" id="keySB" name="keySB" value="player_search" style="display: none;">
+        <input type="text" id="valueSB" name="valueSB" value="NONE" style="display: none;">
+
+        <div id="LBGames"></div>
+
+        <button onclick='go_back_scoreboard()'>Go Back</button>
+    </div>
+
+    <div id="HistoryPopup" class="InfoPopup" style="background-color: rgb(4, 75, 4);">
+        <h2>History</h2>
+
+        <input type="text" id="keyH" name="keyH" value="player_search" style="display: none;">
+        <input type="text" id="valueH" name="valueH" value="NONE" style="display: none;">
+
+        <div id="HGames"></div>
+
+        <button onclick='go_back_history()'>Go Back</button>
+    </div>
+
+    <div id="EndPopup" class="EndPopup" >
+        <h2>X Wins!!</h2>
+        <button onclick='go_back_end()'>Go Back</button>
+    </div>
+
+    <script src="/static/main.js"></script>
+</body>
+</html>
