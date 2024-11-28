@@ -24,19 +24,20 @@ async function turn_change(event){
         make_grid(event)
     }, 100);
     if(data["home_option"] == "2"){
+        
         turn = turn + 1
-            setTimeout(() => {  
+        setTimeout(async () => {  
+            
             make_grid(event)
-        }, 900)
+        }, 1500)
     }
-    data = await getJsonFile()
-    console.log("AAAAAAAAAAAAAAAAAAAAAA")
-    setTimeout(() => {
+    setTimeout(async () => {
+        data = await getJsonFile()
         if(data["game_state"] != "wait"){
             turn = 0
             show_end_popup()
         }
-    }, 900);
+    }, 200);
 }
 
 async function make_grid(event){
@@ -178,7 +179,7 @@ async function Scoreboard(){
         }
         show("ScoreboardPopup");
         hide("popup");
-    }, 500);
+    }, 200);
 
     modifyJsonFile("key", "Scoreboard")
 }
@@ -205,7 +206,7 @@ async function History(){
         }
         show("HistoryPopup");
         hide("popup");
-    }, 500);
+    }, 200);
 
     modifyJsonFile("key", "History")
 }
@@ -247,7 +248,7 @@ function search_history(){
         }
         show("HistoryPopup");
         hide("popup");
-    }, 500);
+    }, 200);
 
 }
 
@@ -270,7 +271,7 @@ function search_scoreboard(){
         }
         show("ScoreboardPopup");
         hide("popup");
-    }, 500);
+    }, 200);
 }
 
 function go_back_scoreboard(){
@@ -285,17 +286,31 @@ function go_back_history(){
 }
 
 function set_playerAI(){
-    hide("PVPpopupAI");
-    modifyJsonFile("keyPAI", "valuePAI");
+    if(document.getElementById("valuePAI").value != ""){
+        hide("PVPpopupAI");
+    
+        modifyJsonFile("keyPAI", "valuePAI");
+    } else {
+        alert("Please input a valid name.")
+    }
 }
 
 function set_player1(){
-    show("PVPpopup2");
-    hide("PVPpopup1");
-    modifyJsonFile("keyP1", "valueP1");
+    if(document.getElementById("valueP1").value != ""){
+        show("PVPpopup2");
+        hide("PVPpopup1");
+        modifyJsonFile("keyP1", "valueP1");
+    } else {
+        alert("Please input a valid name.")
+    }
 }
 function set_player2(){
-    hide("PVPpopup2");
-    modifyJsonFile("keyP2", "valueP2");
+    if(document.getElementById("valueP2").value != ""){
+        hide("PVPpopup2");
+    
+        modifyJsonFile("keyP2", "valueP2");
+    } else {
+        alert("Please input a valid name.")
+    }
 }
 

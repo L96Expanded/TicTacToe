@@ -33,7 +33,7 @@ def display_leaderboard(stats):
 def search_leaderboard(stats):
     print("\nSearch for a player in the leaderboard.")
     while json.load(open('data.json'))["player_search"] == "N-A":
-        time.sleep(0.5)
+        time.sleep(0.05)
     name = json.load(open('data.json'))["player_search"]  # Take input as-is
     if json.load(open('data.json'))["player_search"] == "NONE":
         help.change_val("home_option","N-A")

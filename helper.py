@@ -64,7 +64,7 @@ def home_screen():
     print("4. View Game History")
     print("5. Exit")
     while json.load(open('data.json'))["home_option"] == "N-A":
-        time.sleep(0.5)
+        time.sleep(0.05)
     return json.load(open('data.json'))["home_option"]
     # return json.load(open('infoTransport.json'))[0]["home_option"]
 
@@ -147,7 +147,7 @@ def play_game():
         if option == "1":
             print("Enter name for Player 1 (X): ")
             while json.load(open('data.json'))["player1"] == "N-A" or json.load(open('data.json'))["player2"] == "N-A":
-                time.sleep(0.5)
+                time.sleep(0.05)
             player1 = json.load(open('data.json'))["player1"]
             player2 = json.load(open('data.json'))["player2"]
             if player1 not in stats:
@@ -158,7 +158,7 @@ def play_game():
             play_round(players, stats, history, ai_mode=False)
         elif option == "2":
             while json.load(open('data.json'))["player1"] == "N-A":
-                time.sleep(0.5)
+                time.sleep(0.05)
                 
             player_name = json.load(open('data.json'))["player1"]
             if player_name not in stats:
