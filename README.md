@@ -106,6 +106,13 @@ Used for sorting the leaderboard and game history.
 
 # Time Complexities
 
+### thread functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
+| `run_script()`	              | O(1)           | O(1)           | O(1)          | 
+| `__main__`	                 | O(1)           | O(1)           | O(1)          | 
+
 ## Backend functions 
 
 ### Game Functions
@@ -208,6 +215,15 @@ Used for sorting the leaderboard and game history.
 | `set_playerAI()`              | O(1)           | O(1)           | O(1)          |
 | `set_player1()`               | O(1)           | O(1)           | O(1)          |
 | `set_player2()`               | O(1)           | O(1)           | O(1)          |
+
+### app functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
+| `index()`                     | O(1)           | O(1)           | O(1)          | 
+| `modify_json()`               | O(1)           | O(1)           | O(1)          | 
+| `get_json_data()`             | O(1)           | O(1)           | O(1)          |
+
 
 # Acknowledgments
 This project was developed as part of a Computer Science algorithms course. It integrates general and AI algorithms, as well as various data structures in a Tic-Tac-Toe game.
