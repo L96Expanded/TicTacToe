@@ -44,12 +44,12 @@
             <input type="text" id="key" name="key" value="home_option" style="display: none;" >
             <input type="text" id="P1vP2" name="P1vP2" value="1" style="display: none;">
             <input type="text" id="P1vAI" name="P1vAI" value="2" style="display: none;">
-            <input type="text" id="Scoreboard" name="Scoreboard" value="3" style="display: none;">
+            <input type="text" id="Leaderboard" name="Leaderboard" value="3" style="display: none;">
             <input type="text" id="History" name="History" value="4" style="display: none;">
 
             <button style="background-color: rgb(66, 19, 19);" onclick='PVP()' class="menu_select" id="player vs player">P1 vs P2</button>
             <button style="background-color: rgb(66, 19, 19);" onclick='PVAI()' class="menu_select" id="player vs AI">P1 vs AI</button>
-            <button style="background-color: rgb(4, 36, 75);" onclick='Scoreboard()' class="menu_select" id="view_scores">Leaderboard</button>
+            <button style="background-color: rgb(4, 36, 75);" onclick='Leaderboard()' class="menu_select" id="view_scores">Leaderboard</button>
             <button style="background-color: rgb(4, 75, 4);" onclick='History()' class="menu_select" id="view_history">History</button>
         </div>
     </div>
@@ -88,20 +88,20 @@
     </div>
 
 
-    <div id="ScoreboardPopup" class="InfoPopup" style="background-color: rgb(4, 36, 75);">
+    <div id="LeaderboardPopup" class="InfoPopup" style="background-color: rgb(4, 36, 75);">
         <h2>Leaderboard</h2>
 
-        <input type="text" id="keySB" name="keySB" value="player_search" style="display: none;">
-        <input type="text" id="valueSB" name="valueSB" value="NONE" style="display: none;">
+        <input type="text" id="keyLB" name="keyLB" value="player_search" style="display: none;">
+        <input type="text" id="valueLB" name="valueLB" value="NONE" style="display: none;">
         
-        <label for="valueSBsearch">Search Games</label><br><br>
-        <input type="text" id="valueSBsearch" name="valueSBsearch" placeholder="Player Name"><br><br>
+        <label for="valueLBsearch">Search Games</label><br><br>
+        <input type="text" id="valueLBsearch" name="valueLBsearch" placeholder="Player Name"><br><br>
 
-        <button onclick='search_scoreboard()'>Search</button>
+        <button onclick='search_leaderboard()'>Search</button>
 
         <div id="LBGames"></div>
 
-        <button onclick='go_back_scoreboard()'>Go Back</button>
+        <button onclick='go_back_leaderboard()'>Go Back</button>
     </div>
 
 

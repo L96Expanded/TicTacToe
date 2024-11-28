@@ -1,50 +1,75 @@
 import helper as util
 
-
-# --- AI Logic ---
-
-# Minimax algorithm for AI moves
-def minimax(board, depth, is_maximizing, ai_player, human_player):
-    if util.check_winner(board, ai_player):
-        return 10 - depth
-    if util.check_winner(board, human_player):
-        return depth - 10
-    if util.is_full(board):
-        return 0
-
-    if is_maximizing:
-        best_score = float('-inf')
-        for i in range(3):
-            for j in range(3):
-                if board[i][j] is None:
-                    board[i][j] = ai_player
-                    score = minimax(board, depth + 1, False, ai_player, human_player)
-                    board[i][j] = None
-                    best_score = max(best_score, score)
-        return best_score
-    else:
-        best_score = float('inf')
-        for i in range(3):
-            for j in range(3):
-                if board[i][j] is None:
-                    board[i][j] = human_player
-                    score = minimax(board, depth + 1, True, ai_player, human_player)
-                    board[i][j] = None
-                    best_score = min(best_score, score)
-        return best_score
+# This file stores all the necessary functions which make the AI features work
 
 
-# Get the best AI move
-def get_ai_move(board, ai_player, human_player):
-    best_score = float('-inf')
-    best_move = None
+# Greedy AI Move Logic
+def greedy_ai_move(board, ai_player, human_player):
+    """
+        Determines the AI's next move using a greedy strategy:
+        1. Prioritize winning moves.
+        2. Block the opponent's winning moves.
+        3. Choose the center if available.
+        4. Choose a corner or edge strategically.
+        5. Fallback to the first available move.
+
+        Time Complexity:
+        - Best Case: O(1) (Immediate win or block is found on the first iteration).
+        - Average Case: O(9) (Iterates over the entire 3x3 grid once).
+        - Worst Case: O(9) (Checks all cells before deciding).
+        """
+
+    # 1. Check for a winning move
     for i in range(3):
         for j in range(3):
             if board[i][j] is None:
                 board[i][j] = ai_player
-                score = minimax(board, 0, False, ai_player, human_player)
-                board[i][j] = None
-                if score > best_score:
-                    best_score = score
-                    best_move = (i, j)
-    return best_move
+                if util.check_winner(board, ai_player):
+                    board[i][j] = None  # Undo the move
+                    return (i, j)  # Take the winning move
+                board[i][j] = None  # Undo the move
+
+    # 2. Block the opponent's winning move
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] is None:
+                board[i][j] = human_player
+                if util.check_winner(board, human_player):
+                    board[i][j] = None  # Undo the move
+                    return (i, j)  # Block the opponent's win
+                board[i][j] = None  # Undo the move
+
+    # 3. Take the center if available
+    if board[1][1] is None:
+        return (1, 1)
+
+    # 4. Take one of the corners
+    corners = [(0, 0), (0, 2), (2, 0), (2, 2)]
+    for corner in corners:
+        if board[corner[0]][corner[1]] is None:
+            return corner
+
+    # 5. Take one of the edges
+    edges = [(0, 1), (1, 0), (1, 2), (2, 1)]
+    for edge in edges:
+        if board[edge[0]][edge[1]] is None:
+            return edge
+
+    # 6. Fallback to the first available move (should rarely happen)
+    for i in range(3):
+        for j in range(3):
+            if board[i][j] is None:
+                return (i, j)
+
+
+def get_ai_move(board, ai_player, human_player):
+    """
+        Wrapper for calling the greedy AI move function.
+        Directs the AI to use the greedy algorithm.
+
+        Time Complexity:
+        - Best Case: O(1) (Immediate win or block is found on the first iteration).
+        - Average Case: O(9) (Iterates over the entire 3x3 grid once).
+        - Worst Case: O(9) (Checks all cells before deciding).
+        """
+    return greedy_ai_move(board, ai_player, human_player)

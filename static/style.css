@@ -8,12 +8,14 @@
     --yCoor: 0;
     --xCoor: 0;
 }
+
 /* Menu -------------------------------------------------------------- */
 
 .menu{
     background-color: rgb(20, 20, 20);
     height: 100%;
     width: 100%;
+
     align-items: center;
     position: absolute;
     text-align: center;
@@ -35,35 +37,40 @@
     line-height: 20px;
 }
 
-.scoreboard{
+.leaderboard{
     background-color: rgb(23, 23, 23);
     height: 90%;
     width: var(--LD-w);
+
     font-family: Verdana, Geneva, Tahoma, sans-serif;
     font-size: 25px;
-
     color: white;
+
     position: absolute;
     top:25px;
     right: 0px;
+
     line-height: 5px;
     overflow: hidden;
     text-overflow: clip;
-    
 }
 
 
 /* Buttons ----------------------------------------------------- */
+
 .menu_select{
     width: 160px;
     height: 80px;
     translate: 0 px;
     color: white;
+
     border-style: none;
     border-color: rgb(190, 190, 190);
     border-radius: 10px;
+
     font-family: Arial, Helvetica, sans-serif;
     font-size: 25px;
+
     margin-bottom: 10px;
     margin-left: 5px;
     margin-right: 5px;
@@ -73,11 +80,45 @@
     background-color: rgb(26, 26, 26);
 }
 
+.Infopopup button{
+    height: 60px;
+    width: 120px;
+    background-color: rgb(253, 253, 253);
+
+    border-radius: 10px;
+    border-style: solid;
+
+    font-size: 17px;
+}
+
+.Endpopup button{
+    height: 60px;
+    width: 120px;
+    background-color: rgb(253, 253, 253);
+
+    border-radius: 10px;
+    border-style: solid;
+
+    font-size: 17px;
+}
+
+.PVPpopup button{
+    height: 60px;
+    width: 120px;
+    background-color: rgb(253, 253, 253);
+
+    border-radius: 10px;
+    border-style: solid;
+
+    font-size: 17px;
+}
+
 /* Sections --------------------------------------------------------*/
 
 .grid{
     height: var(--square-side);
     width: var(--square-side);
+
     position: absolute;
     left: 50%;
     top: 50%;
@@ -121,14 +162,15 @@
 
     border-radius: 50%;
     background: radial-gradient(36% 36% at 50% , rgba(0, 0, 0, 0) 98%, rgb(255, 41, 41) 99%);
-
 }
 
 /* shapes ---------------------------------------------------------------------*/
+
 .border-l{
     width: var(--border-w);
     height: 100%;
     background-color: rgb(30, 30, 30);
+
     position: absolute;
     top: 0%;
     left: 0%;
@@ -137,6 +179,7 @@
     width: var(--border-w);
     height: 100%;
     background-color: rgb(30, 30, 30);
+
     position: absolute;
     top: 0%;
     right: 0%;
@@ -146,6 +189,7 @@
     background-color: gray;
     width: inherit;
     height: 3%;
+
     position: absolute;
     left: inherit;
     transform: translate(-50%, -50% );
@@ -156,6 +200,7 @@
     background-color: gray;
     width: 3%;
     height: inherit;
+
     position: absolute;
     top: 50%;
     transform: translate(-50%,-50% );
@@ -166,8 +211,8 @@
     width: 25%;
     height: 25%;
     position: absolute;
-
     background-color: rgb(70, 112, 251);
+
     clip-path: polygon(0% 43%,
     43% 43%,
     43% 0%,
@@ -190,20 +235,24 @@
 
     border-radius: 50%;
     background: radial-gradient(36% 36% at 50% , rgba(0, 0, 0, 0) 98%, rgb(255, 41, 41) 99%);
-
 }
 
-/* popups ----------------------------------------------------------- */
+/* popups styles ----------------------------------------------------------- */
+
 .PVPpopup{
     width: 80%;
     height: 35%;
+    display: none;
     background-color: rgb(52, 52, 52);
-    border-width: 2px;
+    
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+
+    border-width: 2px;
     border-style: solid;
     border-radius: 20px;
     border-color: rgb(212, 212, 212);
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -211,20 +260,14 @@
     transform: translate(-50%,-50%);
 }
 
-.PVPpopup button{
-    height: 60px;
-    width: 120px;
-    background-color: rgb(253, 253, 253);
-    border-radius: 10px;
-    border-style: solid;
-    font-size: 17px;
-}
 .PVPpopup input{
     height: 40px;
     width: 90%;
     background-color: rgb(253, 253, 253);
+
     border-radius: 10px;
     border-style: solid;
+
     font-size: 17px;
 }
 
@@ -232,9 +275,13 @@
 .InfoPopup{
     width: 100%;
     height: 100%;
+    min-height: 1000px;
     background-color: rgb(81, 0, 0);
+
     font-family: Arial, Helvetica, sans-serif;
     color: white;
+
+    display: none;
 
     position: absolute;
     top: 0%;
@@ -242,20 +289,14 @@
     padding-left: 50px;
 }
 
-.Infopopup button{
-    height: 60px;
-    width: 120px;
-    background-color: rgb(253, 253, 253);
-    border-radius: 10px;
-    border-style: solid;
-    font-size: 17px;
-}
 .valueHsearch{
     height: 40px;
     width: 90%;
     background-color: rgb(253, 253, 253);
+
     border-radius: 10px;
     border-style: solid;
+
     font-size: 17px;
 }
 
@@ -271,6 +312,8 @@
     border-radius: 40px;
     border-color: rgb(212, 212, 212);
 
+    display: none;
+
     position: absolute;
     top: 50%;
     left: 50%;
@@ -278,11 +321,3 @@
     padding-left: 50px;
 }
 
-.Endpopup button{
-    height: 60px;
-    width: 120px;
-    background-color: rgb(253, 253, 253);
-    border-radius: 10px;
-    border-style: solid;
-    font-size: 17px;
-}
