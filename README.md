@@ -43,7 +43,7 @@ This is a Python-based implementation of the classic Tic-Tac-Toe game. It includ
 # How to Play
 
 ### Run the Game:
-Execute `main.py` to start the program.
+Execute `run.py` to start the program.
 
 ### Select Mode:
 Choose between:
@@ -51,7 +51,7 @@ Choose between:
 - Playing against the AI.
 
 ### Input Moves:
-Enter the row and column index for your move (e.g., `1 2` for row 1, column 2).
+Select on the on-screen gris a position.
 
 ### View Results:
 After each game:
@@ -59,6 +59,11 @@ After each game:
 - View or search the leaderboard.
 
 # Code Structure
+
+### run.py
+- starts and threads 'app.py' and 'main.py' as subprocesses and opens the website
+
+## backend
 
 ### `main.py`:
 - Entry point for the program.
@@ -76,6 +81,16 @@ After each game:
 ### Utility Functions:
 - Reusable helper functions are implemented in the helper module.
 - Sorting algorithms in the `algos` module (e.g., quicksort).
+
+## Frontend
+
+### `app.py`:
+- creates the python server used to host the website and stores the fetch 'GET' and 'POST' functions
+
+- ### Website setup:
+- **`index.html`**: Formats the website.
+- **`style.css`**: stores the .css styles used in index.html.
+- **`main.js`**: Stores the necessary javascript functions
 
 # Algorithms Used
 
