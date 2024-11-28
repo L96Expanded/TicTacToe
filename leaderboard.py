@@ -12,7 +12,6 @@ def update_stats(stats, winner, players):
         - Average Case: O(1).
         - Worst Case: O(1).
         """
-
     if winner:
         stats[winner]['wins'] += 1
         for player in players:
