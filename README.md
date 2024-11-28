@@ -91,8 +91,6 @@ Used for sorting the leaderboard and game history.
 
 # Time Complexities
 
-# Time Complexities
-
 ### Game Functions
 
 | Function             | Best Case      | Average Case  | Worst Case    |
