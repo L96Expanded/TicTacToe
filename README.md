@@ -106,6 +106,8 @@ Used for sorting the leaderboard and game history.
 
 # Time Complexities
 
+## Backend functions 
+
 ### Game Functions
 
 | Function             | Best Case      | Average Case  | Worst Case    |
@@ -152,7 +154,9 @@ Used for sorting the leaderboard and game history.
 | `home_screen`         | O(1)           | O(1)           | O(1)          |
 | `play_game`           | O(1)           | O(n)           | O(n)          |
 
-### Frontend functions 
+## Frontend functions 
+
+### Display website functions
 
 | Function Name                | Best Case      | Average Case  | Worst Case    |
 |------------------------------|----------------|----------------|---------------|
@@ -161,21 +165,46 @@ Used for sorting the leaderboard and game history.
 | `grid_hover_see(event)`       | O(1)           | O(1)           | O(1)          |
 | `grid_hover_end(event)`       | O(1)           | O(1)           | O(1)          |
 | `set_params(event)`           | O(1)           | O(1)           | O(1)          |
+
+### Modify Display functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
 | `hide(id)`                    | O(1)           | O(1)           | O(1)          |
 | `show(id)`                    | O(1)           | O(1)           | O(1)          |
 | `change(id1, id2)`            | O(1)           | O(1)           | O(1)          |
+
+### Json functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
 | `modifyJsonFile(key, value)`  | O(1)           | O(1)           | O(1)          |
 | `getJsonFile()`               | O(1)           | O(1)           | O(1)          |
+
+### Display popup functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
 | `PVP()`                       | O(1)           | O(1)           | O(1)          |
 | `PVAI()`                      | O(1)           | O(1)           | O(1)          |
 | `Scoreboard()`                | O(1)           | O(n)           | O(n)          |
 | `History()`                   | O(1)           | O(n)           | O(n)          |
 | `show_end_popup()`            | O(1)           | O(1)           | O(1)          |
 | `go_back_end()`               | O(1)           | O(1)           | O(1)          |
-| `search_history()`            | O(1)           | O(n)           | O(n)          |
-| `search_scoreboard()`         | O(1)           | O(n)           | O(n)          |
 | `go_back_scoreboard()`        | O(1)           | O(1)           | O(1)          |
 | `go_back_history()`           | O(1)           | O(1)           | O(1)          |
+
+### Search button functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
+| `search_history()`            | O(1)           | O(n)           | O(n)          |
+| `search_scoreboard()`         | O(1)           | O(n)           | O(n)          |
+
+### Set player functions
+
+| Function             | Best Case      | Average Case  | Worst Case    |
+|----------------------|----------------|----------------|---------------|
 | `set_playerAI()`              | O(1)           | O(1)           | O(1)          |
 | `set_player1()`               | O(1)           | O(1)           | O(1)          |
 | `set_player2()`               | O(1)           | O(1)           | O(1)          |
