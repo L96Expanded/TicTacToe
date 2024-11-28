@@ -37,7 +37,7 @@ This is a Python-based implementation of the classic Tic-Tac-Toe game. It includ
 ## Installation
 1. Clone this repository:
    ```bash
-   git clone https://github.com/yourusername/tic-tac-toe-ai.git
+   git clone https://github.com/L96Expanded/TicTacToe.git
    cd tic-tac-toe-ai
 
 # How to Play
