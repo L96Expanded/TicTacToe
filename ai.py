@@ -1,10 +1,24 @@
 import helper as util
 
+# This file stores all the necessary functions which make the AI features work
 
-# --- AI Logic ---
 
 # Greedy AI Move Logic
 def greedy_ai_move(board, ai_player, human_player):
+    """
+        Determines the AI's next move using a greedy strategy:
+        1. Prioritize winning moves.
+        2. Block the opponent's winning moves.
+        3. Choose the center if available.
+        4. Choose a corner or edge strategically.
+        5. Fallback to the first available move.
+
+        Time Complexity:
+        - Best Case: O(1) (Immediate win or block is found on the first iteration).
+        - Average Case: O(9) (Iterates over the entire 3x3 grid once).
+        - Worst Case: O(9) (Checks all cells before deciding).
+        """
+
     # 1. Check for a winning move
     for i in range(3):
         for j in range(3):
@@ -48,10 +62,16 @@ def greedy_ai_move(board, ai_player, human_player):
                 return (i, j)
 
 
-# Get the best AI move
-# Get the best AI move using the Greedy Algorithm
 def get_ai_move(board, ai_player, human_player):
-    # Use the greedy_ai_move function logic to make the decision
+    """
+        Wrapper for calling the greedy AI move function.
+        Directs the AI to use the greedy algorithm.
+
+        Time Complexity:
+        - Best Case: O(1) (Immediate win or block is found on the first iteration).
+        - Average Case: O(9) (Iterates over the entire 3x3 grid once).
+        - Worst Case: O(9) (Checks all cells before deciding).
+        """
     return greedy_ai_move(board, ai_player, human_player)
 
 

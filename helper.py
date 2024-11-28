@@ -3,36 +3,84 @@ import ai
 import leaderboard as lb
 import gamehist as gh
 
+# This section has functions which unify the algorithms and AI/leaderboard/game history functions to generate the game
 
-# Initialize the board as a 2D array
+
 def initialize_board():
+    """
+    Displays the current game board to the console.
+
+    Time Complexity:
+    - Best Case: O(9).
+    - Average Case: O(9).
+    - Worst Case: O(9).
+    """
+
     return [[None for _ in range(3)] for _ in range(3)]
 
 
-# Display the board
 def display_board(board):
+    """
+    Displays the current game board to the console.
+
+    Time Complexity:
+    - Best Case: O(1) (Fixed 3x3 board display).
+    - Average Case: O(1).
+    - Worst Case: O(1).
+    """
+
     print("\n".join([" | ".join([cell or " " for cell in row]) for row in board]))
     print("-" * 9)
 
 
-# Check if a player has won (Row, Column, and Diagonal Traversal)
 def check_winner(board, player):
+    """
+    Checks if the given player has won the game.
+
+    Time Complexity:
+    - Best Case: O(1) (Winner is found in the first row, column, or diagonal checked).
+    - Average Case: O(3) (Three iterations for rows, columns, or diagonals).
+    - Worst Case: O(9) (Checks all rows, columns, and both diagonals).
+    """
+    # Check rows
     for row in board:
         if all(cell == player for cell in row):
             return True
+
+    # Check columns
     for col in range(3):
         if all(board[row][col] == player for row in range(3)):
             return True
+
+    # Check diagonals
     if all(board[i][i] == player for i in range(3)) or all(board[i][2 - i] == player for i in range(3)):
         return True
+
     return False
 
 
-# Check if the board is full
 def is_full(board):
+    """
+    Checks if the game board is completely filled with no empty spaces.
+
+    Time Complexity:
+    - Best Case: O(1) (Determined in the first iteration if an empty cell is found).
+    - Average Case: O(9) (Iterates through the entire 3x3 grid once).
+    - Worst Case: O(9) (Checks all cells when the board is completely filled).
+    """
     return all(all(cell is not None for cell in row) for row in board)
 
+
 def home_screen():
+    """
+    Generates a terminal-based UI for player interaction
+
+    Time Complexity:
+    - Best Case: O(1).
+    - Average Case: O(1).
+    - Worst Case: O(1).
+    """
+
     print("\nWelcome to Tic-Tac-Toe!")
     print("1. Player vs Player")
     print("2. Player vs AI")
@@ -42,8 +90,16 @@ def home_screen():
     return input("Select an option: ").strip()
 
 
-# Play a single round of the game
 def play_round(players, stats, history, ai_mode=False):
+    """
+    Conducts a single round of Tic-Tac-Toe between two players or a player and the AI.
+
+    Time Complexity:
+    - Best Case: O(1) (Game ends quickly due to a win).
+    - Average Case: O(9) (Full grid is utilized).
+    - Worst Case: O(9) (Full grid is utilized with no winner until the last move).
+    """
+
     board = initialize_board()
     current_turn = players[0]
     ai_player = players[1] if ai_mode else None
@@ -94,8 +150,17 @@ def play_round(players, stats, history, ai_mode=False):
     else:
         players.reverse()  # Alternate the starting player if draw
 
-# Main game loop
+
 def play_game():
+    """
+        The main game loop. Provides options for PvP, PvAI, leaderboard, and game history.
+
+        Time Complexity:
+        - Best Case: O(1) (Immediate exit or simple operation chosen).
+        - Average Case: O(n) (Where `n` is the number of rounds played or entries in history/leaderboard).
+        - Worst Case: O(n) (Multiple rounds and operations performed).
+        """
+
     stats = {}
     history = []
 
