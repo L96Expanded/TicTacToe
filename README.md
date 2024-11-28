@@ -87,7 +87,7 @@ After each game:
 ### `app.py`:
 - creates the python server used to host the website and stores the fetch 'GET' and 'POST' functions
 
-- ### Website setup:
+### Website setup:
 - **`index.html`**: Formats the website.
 - **`style.css`**: stores the .css styles used in index.html.
 - **`main.js`**: Stores the necessary javascript functions
@@ -152,6 +152,33 @@ Used for sorting the leaderboard and game history.
 | `home_screen`         | O(1)           | O(1)           | O(1)          |
 | `play_game`           | O(1)           | O(n)           | O(n)          |
 
+### Frontend functions 
+
+| Function Name                | Best Case      | Average Case  | Worst Case    |
+|------------------------------|----------------|----------------|---------------|
+| `turn_change(event)`          | O(1)           | O(1)           | O(1)          |
+| `make_grid(event)`            | O(9)           | O(9)           | O(9)          |
+| `grid_hover_see(event)`       | O(1)           | O(1)           | O(1)          |
+| `grid_hover_end(event)`       | O(1)           | O(1)           | O(1)          |
+| `set_params(event)`           | O(1)           | O(1)           | O(1)          |
+| `hide(id)`                    | O(1)           | O(1)           | O(1)          |
+| `show(id)`                    | O(1)           | O(1)           | O(1)          |
+| `change(id1, id2)`            | O(1)           | O(1)           | O(1)          |
+| `modifyJsonFile(key, value)`  | O(1)           | O(1)           | O(1)          |
+| `getJsonFile()`               | O(1)           | O(1)           | O(1)          |
+| `PVP()`                       | O(1)           | O(1)           | O(1)          |
+| `PVAI()`                      | O(1)           | O(1)           | O(1)          |
+| `Scoreboard()`                | O(1)           | O(n)           | O(n)          |
+| `History()`                   | O(1)           | O(n)           | O(n)          |
+| `show_end_popup()`            | O(1)           | O(1)           | O(1)          |
+| `go_back_end()`               | O(1)           | O(1)           | O(1)          |
+| `search_history()`            | O(1)           | O(n)           | O(n)          |
+| `search_scoreboard()`         | O(1)           | O(n)           | O(n)          |
+| `go_back_scoreboard()`        | O(1)           | O(1)           | O(1)          |
+| `go_back_history()`           | O(1)           | O(1)           | O(1)          |
+| `set_playerAI()`              | O(1)           | O(1)           | O(1)          |
+| `set_player1()`               | O(1)           | O(1)           | O(1)          |
+| `set_player2()`               | O(1)           | O(1)           | O(1)          |
 
 # Acknowledgments
 This project was developed as part of a Computer Science algorithms course. It integrates general and AI algorithms, as well as various data structures in a Tic-Tac-Toe game.
