@@ -33,12 +33,17 @@ This is a Python-based implementation of the classic Tic-Tac-Toe game. It includ
 ## Requirements
 - Python 3.7 or higher
 - Standard Python libraries (datetime)
+- flask library
+  ```bash
+   pip install flask
 
 ## Installation
 1. Clone this repository:
    ```bash
    git clone https://github.com/L96Expanded/TicTacToe.git
    cd tictactoe
+If possible switch directly to the imported tictactoe folder, 
+it still works either way, but saves time for refreshing
 
 # How to Play
 
